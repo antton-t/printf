@@ -4,9 +4,7 @@
 int main()
 {
 	char a[] ="helou bbao";
-	int b = 12344;
-	printf("%--1-4s sdf\n",a);
-	printf("%.*d\n",10,b);
-	ft_printf("%*.*d\n",10,b,b);
-
+	int b = -3243;
+	printf("%u\n",b);
+	ft_printf("%u\n",b);
 }

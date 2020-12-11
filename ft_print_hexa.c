@@ -4,31 +4,20 @@ void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
-void	ft_change_base(unsigned long long nb, t_list *print)
+void	ft_change_base(long nb, int *count, int format)
 {
 	char	*base;
 
-	if (print->format == 'x' ||print->format == 'p')
+	if (format == 'x' ||format == 'p')
 		base = "0123456789abcdef";
 	else
 		base = "0123456789ABCDEF";
-	if (nb >= 16)
-		ft_change_base((nb / 16), print);
-	ft_putchar(base[nb % 16]);
-}
-void	ft_print_hexa(va_list ap, int *count, t_list *print)
-{
-	int	nb;
-
-	nb = va_arg(ap, int);
 	if (nb < 0)
-	{
-		nb = -nb;
-		write(1, "-", 1);
-		*count++;
-	}
-	(unsigned long long)nb;
-	ft_change_base(nb, print);
+		nb = 4294967295 + nb + 1;
+	if (nb >= 16)
+		ft_change_base((nb / 16), count, format);
+	*count++;
+	ft_putchar(base[nb % 16]);
 }
 void	ft_print_address(va_list ap, int *count, t_list *print)
 {

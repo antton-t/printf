@@ -9,11 +9,8 @@ size_t	ft_strlen(char *str)
 		count++;
 	return (count);
 }
-void	ft_print_string(va_list ap, int *count)
+void	ft_print_string(char *out, int *count)
 {
-	char	*out;
-
-	out = va_arg(ap, char*);
 	write(1, out, ft_strlen(out));
-	count = count + ft_strlen(out);
+	*count = *count + ft_strlen(out);
 }
