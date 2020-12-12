@@ -4,7 +4,7 @@
 int main()
 {
 	char a[] ="helou bbao";
-	int b = -3243;
-	printf("%u\n",b);
-	ft_printf("%u\n",b);
+	int b = 334;
+	ft_printf("%3Xp\n",b);
+	printf("%3Xp\n",b);
 }

@@ -6,6 +6,27 @@ void	ft_putnbr(unsigned int nbr, int *count)
 	*count++;
 	ft_putchar(nbr % 10 + '0');
 }
+int    ft_count_nbr(int n)
+{
+	int	count;
+	unsigned int	nb;
+
+	count = 0;
+	if (n < 0)
+	{
+		nb = (unsigned int) -n;
+		count++;
+	}
+	else
+		nb = (unsigned int) n;
+	while (nb != 0)
+	{
+		nb /= 10;
+		count++;
+	}
+	printf("%d count dans count size\n", count);
+	return (count);
+}
 void    ft_print_nbr(int n, int *count)
 {
         unsigned int    nb;

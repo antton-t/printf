@@ -4,6 +4,21 @@ void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
+int	ft_count_size(long nb, int nbr)
+{
+	int	count;
+
+	count = 0;
+	if (nb < 0)
+		nb = 4294967295 + nb + 1;
+	while (nb != 0)
+	{
+		nb /= nbr;
+		count++;
+	}
+	printf("%d count dans count size\n", count);
+	return (count);
+}
 void	ft_change_base(long nb, int *count, int format)
 {
 	char	*base;
