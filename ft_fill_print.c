@@ -6,6 +6,27 @@ int	ft_isalpha(int a)
 		return (1);
 	return (0);
 }
+void	ft_check_prec(t_list *print, int *count)
+{
+	int size_print;
+
+	if (print->format == 'c')
+		size_print = 1;
+	else if(print->format == 'p' || print->format == 'x' || print->format == 'X')
+		size_print = ft_count_size (print->var_llong, 16);
+	else if (print->format == 'u')
+		size_print = ft_count_size (print->var_llong, 10);
+	else if (print->format == 'd' || print->format == 'i')
+		size_print = ft_count_nbr (print->var_int);
+	if (print->format == 'p')
+		size_print += 2;
+	while (size_print < print->prec)
+	{
+		write(1, "0", 1);
+		size_print++;
+		*count++;
+	}
+}
 int	ft_isdigit(int a)
 {
 	if (a >='0' && a <= '9')
@@ -15,6 +36,8 @@ int	ft_isdigit(int a)
 void	ft_fill_print(const char **str, t_list *print, va_list ap)
 {
 	(*str)++;
+	if (**str == '0')
+		print->zero = 1;
 	while (ft_isalpha(**str) == 0 && **str != '%')
 	{
 		if (**str == '-')
@@ -31,7 +54,7 @@ void	ft_fill_print(const char **str, t_list *print, va_list ap)
 			print->prec = (print->prec * 10) + ((**str) - '0');
 		(*str)++;
 	}
-	printf("%d -> width\n",print->width);
+	printf("%d -> width dans ft_fill_print\n",print->width);
 	printf("%d -> prec\n",print->prec);
 	print->format = **str;
 }

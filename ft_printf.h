@@ -9,6 +9,7 @@ typedef struct	s_list
 {
 	char	*var_string;
 	int	var_int;
+	int	zero;
 	long	var_llong;
 	int	negative;
 	char	format;
@@ -25,7 +26,8 @@ void	ft_putchar(char c);
 void	ft_print_char(char c, int *count);
 void	ft_print_string(char *out, int *count);
 size_t	ft_strlen(char *str);
-void	ft_check_width(t_list *print, int *count);
+void	ft_check_width(t_list *print, int *count, int width, int prec);
+void	ft_check_prec(t_list *print, int *count);
 int	ft_count_size(long nb, int nbr);
 void	ft_change_base(long nb, int *count, int format);
 int	ft_count_nbr(int n);

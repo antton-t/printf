@@ -24,7 +24,6 @@ int    ft_count_nbr(int n)
 		nb /= 10;
 		count++;
 	}
-	printf("%d count dans count size\n", count);
 	return (count);
 }
 void    ft_print_nbr(int n, int *count)

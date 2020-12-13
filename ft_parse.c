@@ -11,6 +11,7 @@ t_list	*ft_initialise(void)
 	out->width = 0;
 	out->dot = 0;
 	out->prec = 0;
+	out->zero = 0;
 	return (out);
 }
 void	ft_parse(va_list ap, const char **str, int *count)
@@ -31,7 +32,7 @@ void	ft_parse(va_list ap, const char **str, int *count)
 		print->var_string = "(null)";
 	else
 		ft_return_else(print, count);
-	printf("%d\n",print->var_int);
-	printf("%c\n",print->format);
+	//printf("%d\n",print->var_int);
+	//printf("%c\n",print->format);
 	ft_print(print, count);
 }

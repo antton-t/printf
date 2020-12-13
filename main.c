@@ -5,6 +5,9 @@ int main()
 {
 	char a[] ="helou bbao";
 	int b = 334;
-	ft_printf("%3Xp\n",b);
-	printf("%3Xp\n",b);
+	int c;
+	c = ft_printf("%*.10Xp\n",11,b);
+	printf("%d\n",c);
+	c = printf("%*.10Xp\n",11,b);
+	printf("%d\n",c);
 }

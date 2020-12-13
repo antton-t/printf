@@ -1,9 +1,11 @@
 #include "ft_printf.h"
 
-void	ft_check_width(t_list *print, int *count)
+void	ft_check_width(t_list *print, int *count, int width, int prec)
 {
 	int size_print;
+	int dif;
 
+	dif = width - prec;
 	if (print->format == 'c')
 		size_print = 1;
 	else if(print->format == 'p' || print->format == 'x' || print->format == 'X')
@@ -14,20 +16,29 @@ void	ft_check_width(t_list *print, int *count)
 		size_print = ft_count_nbr (print->var_int);
 	if (print->format == 'p')
 		size_print += 2;
-	printf("%d size print \n",size_print);
-	while (size_print < print->width && print->negative == 0)
+	while (size_print < print->width && dif > 0)
 	{
-		write(1, " ", 1);
+		if (print->zero == 0)
+			write(1, " ", 1);
+		else
+			write(1, "0", 1);
 		size_print++;
+		*count++;
+		dif--;
 	}
 }
 void	ft_print(t_list *print, int *count)
 {
-	ft_check_width(print, count);
+	printf("%d negative  \n",print->negative);
+	if (print->width > print->prec && print->negative == 0)
+		ft_check_width(print, count, print->width, print->prec);
+	ft_check_prec(print, count);
 	if (print->format == 'p')
 		write(1, "0x", 2);
 	if (ft_check(print) == 1)
 		ft_done(print, count);
+	if (print->width > print->prec && print->negative == 1)
+		ft_check_width(print, count, print->width, print->prec);
 	free(print);
 }
 int	ft_check(t_list *print)

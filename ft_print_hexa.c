@@ -16,7 +16,6 @@ int	ft_count_size(long nb, int nbr)
 		nb /= nbr;
 		count++;
 	}
-	printf("%d count dans count size\n", count);
 	return (count);
 }
 void	ft_change_base(long nb, int *count, int format)
