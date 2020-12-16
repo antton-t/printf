@@ -24,7 +24,7 @@ void	ft_check_prec(t_list *print, int *count)
 	{
 		write(1, "0", 1);
 		size_print++;
-		*count++;
+		*count += 1;
 	}
 }
 int	ft_isdigit(int a)
@@ -47,14 +47,33 @@ void	ft_fill_print(const char **str, t_list *print, va_list ap)
 		if (**str == '*' && print->dot == 0)
 			print->width = va_arg(ap, int);
 		else if (**str == '*' && print->dot == 1)
+		{
 			print->prec = va_arg(ap, int);
+			print->dot_prec = 1;
+		}
 		if (ft_isdigit(**str) == 1 && print->dot == 0)
 			print->width = (print->width * 10) + ((**str) - '0');
 		else if (ft_isdigit(**str) == 1 && print->dot == 1)
+		{
 			print->prec = (print->prec * 10) + ((**str) - '0');
+			print->dot_prec = 1;
+		}
 		(*str)++;
 	}
-	printf("%d -> width dans ft_fill_print\n",print->width);
-	printf("%d -> prec\n",print->prec);
+	ft_check(print);
 	print->format = **str;
+}
+void	ft_check(t_list *print)
+{
+	
+	if (print->width < 0)
+	{
+		print->width = -(print->width);
+		print->negative = 1;
+	}
+	if (print->dot == 1 && print->prec < 0)
+	{
+		print->dot = 0;
+		print->prec = 0;
+	}
 }

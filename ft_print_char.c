@@ -3,5 +3,5 @@
 void	ft_print_char(char c, int *count)
 {
 	write(1, &c, 1);
-	count++;
+	*count += 1;
 }

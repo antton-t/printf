@@ -9,6 +9,7 @@ t_list	*ft_initialise(void)
 	out->negative = 0;
 	out->format = 0;
 	out->width = 0;
+	out->dot_prec = 0;
 	out->dot = 0;
 	out->prec = 0;
 	out->zero = 0;
@@ -32,7 +33,8 @@ void	ft_parse(va_list ap, const char **str, int *count)
 		print->var_string = "(null)";
 	else
 		ft_return_else(print, count);
-	//printf("%d\n",print->var_int);
-	//printf("%c\n",print->format);
-	ft_print(print, count);
+	if (print->format == 's')
+		ft_print_string2 (print, count);
+	else
+		ft_print (print, count);
 }

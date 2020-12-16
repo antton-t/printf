@@ -30,7 +30,7 @@ void	ft_change_base(long nb, int *count, int format)
 		nb = 4294967295 + nb + 1;
 	if (nb >= 16)
 		ft_change_base((nb / 16), count, format);
-	*count++;
+	*count += 1;
 	ft_putchar(base[nb % 16]);
 }
 void	ft_print_address(va_list ap, int *count, t_list *print)

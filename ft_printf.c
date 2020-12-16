@@ -16,7 +16,7 @@ int	ft_printf(const char *str, ...)
 			write (1, str, 1);
 			count++;
 		}
-		*str++;
+		str++;
 	}
 	va_end(ap);
 	return (count);
