@@ -10,6 +10,7 @@ void	ft_check_prec(t_list *print, int *count)
 {
 	int size_print;
 
+	size_print = 0;
 	if (print->format == 'c')
 		size_print = 1;
 	else if(print->format == 'p' || print->format == 'x' || print->format == 'X')

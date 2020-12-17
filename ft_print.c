@@ -10,6 +10,8 @@ void	ft_check_width(t_list *print, int *count, int width, int prec)
 		size_print = 1;
 	else if(print->format == 'p' || print->format == 'x' || print->format == 'X')
 		size_print = ft_count_size (print->var_llong, 16);
+	else
+		size_print = 1;
 	if (print->format == 'p')
 		size_print += 2;
 	while (size_print < print->width && dif > 0)
@@ -39,6 +41,9 @@ void	ft_print(t_list *print, int *count)
 }
 void	ft_done(t_list *print, int *count)
 {
+	char	a;
+
+	a = print->format;
 	if (print->format == 'd' || print->format == 'i')
 		ft_print_nbr (print->var_int, count);
 	else if (print->format == 'x' || print->format == 'X' || print->format == 'p')
@@ -47,12 +52,9 @@ void	ft_done(t_list *print, int *count)
 		ft_print_char (print->var_int, count);
 	else if (print->format == 'u')
 		ft_print_unit (print->var_llong, count);
-	else if (print->format == '%')
+	else
 	{
-		write(1,"%", 1);
+		write(1, &a, 1);
 		*count += 1;
 	}
-}
-void	ft_return_else(t_list *print, int *count)
-{
 }

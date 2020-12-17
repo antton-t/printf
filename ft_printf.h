@@ -28,7 +28,7 @@ void	ft_width_string(int lengh, t_list *print, int *count);
 void	ft_print_char(char c, int *count);
 void	ft_print_string(char *out, int *count);
 void	ft_width_nbr(t_list *print, int *count, int width, int prec);
-size_t	ft_strlen(char *str);
+int	ft_strlen(char *str);
 void	ft_check(t_list *print);
 void	ft_check_width(t_list *print, int *count, int width, int prec);
 void	ft_check_prec(t_list *print, int *count);
@@ -45,7 +45,6 @@ int	ft_isalpha(int a);
 void	ft_print_string2(t_list *print, int *count);
 void	ft_check(t_list *print);
 void	ft_done(t_list *print, int *count);
-void	ft_return_else(t_list *print, int *count);
 void	ft_print(t_list *print, int *count);
 
 #endif

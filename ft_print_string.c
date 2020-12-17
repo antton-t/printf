@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-size_t	ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
 	while (str[count])
@@ -43,6 +43,11 @@ void	ft_print_string2(t_list *print, int *count)
 	int lengh;
 
 	lengh = ft_strlen(print->var_string);
+	if (print->var_string == "(null)")
+	{
+		write(1, "(null)", 6);
+		*count = 6;
+	}
 	if (print->width > lengh && print->negative == 0)
 		ft_width_string(lengh, print, count);
 	ft_precision_string(print, count);

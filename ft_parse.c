@@ -31,8 +31,6 @@ void	ft_parse(va_list ap, const char **str, int *count)
 		print->var_int = va_arg(ap, int);
 	else if (print->format == 's' && print->var_string == NULL)
 		print->var_string = "(null)";
-	else
-		ft_return_else(print, count);
 	if (print->format == 's')
 		ft_print_string2 (print, count);
 	else
